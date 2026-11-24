@@ -12,13 +12,19 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Executable
 add_executable(redis-server
-    src/main.cpp
+    src/server.cpp
+)
+
+add_executable(redis-client
+    src/client.cpp
 )
 
 # Compiler warnings
-target_compile_options(redis-server PRIVATE
-    -Wall
-    -Wextra
-    -Wpedantic
-    -Werror
-)
+foreach(target redis-server redis-client)
+    target_compile_options(${target} PRIVATE
+        -Wall
+        -Wextra
+        -Wpedantic
+        -Werror
+    )
+endforeach()
