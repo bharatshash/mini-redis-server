@@ -78,7 +78,7 @@ static int32_t one_request(int connfd){
 	}
 
 	//request body
-	err = read_full(connfd,rbuf,len);
+	err = read_full(connfd,&rbuf[4],len);
 
 	if(err){
 		msg("read() error");
